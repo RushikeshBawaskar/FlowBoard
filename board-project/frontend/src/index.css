@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Segoe UI",
+    "Trebuchet MS",
+    "Helvetica Neue",
+    sans-serif;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+  color: #1b2a41;
+}
+
+#root {
+  min-height: 100vh;
+}

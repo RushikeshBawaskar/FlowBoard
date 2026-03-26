@@ -1,0 +1,145 @@
+\documentclass[a4paper,10pt]{article}
+
+% ATS-friendly lines for better text extraction
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Rushikesh Bawaskar - Software Engineer Resume},
+    pdfauthor={Rushikesh Bawaskar},
+    pdfsubject={Software Engineer},
+    pdfkeywords={Python, Agentic AI, FastAPI, MCP, Letta, RAG, Software Engineer, GCP, pgvector},
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black,
+    pdfborder={0 0 0},
+    pdfnewwindow=true
+}
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[left=1.2cm, right=1.2cm, top=2cm, bottom=1.2cm]{geometry}
+\usepackage{enumitem} % For compact lists
+\usepackage{titlesec} % For adjusting spacing in sections
+\usepackage{array} % For table formatting
+
+% Adjust spacing before and after section titles
+\titlespacing*{\section}{0pt}{10pt plus 1pt minus 1pt}{6pt plus 1pt minus 1pt}
+\setlength{\parskip}{0pt} % Reduce space between paragraphs
+
+% Custom section formatting with horizontal line
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+
+\title{Resume}
+\date{}
+
+\begin{document}
+\vspace*{-1.1cm} % Reduce top padding
+
+%====================
+% Header
+%====================
+\begin{center}
+    {\LARGE\textbf{Rushikesh Bawaskar}}\\[0.3cm]
+    \small
+    +91 9022019499 \;
+    \href{mailto:theofficialrushi@gmail.com}{theofficialrushi@gmail.com} \;
+    \href{https://github.com/RushikeshBawaskar}{GitHub} \;
+    \href{https://leetcode.com/Rushi_Bawaskar}{LeetCode} \;
+    \href{https://linkedin.com/in/rushibawaskar}{LinkedIn}
+\end{center}
+
+\vspace{0.1cm}
+
+%====================
+% Professional Summary
+%====================
+\section*{Professional Summary}
+Google Certified Professional Cloud Architect \& \textbf{Python Software Engineer} with 2+ years building \textbf{production microservices} and \textbf{Agentic AI systems}. Core expertise in async Python backends (\textbf{FastAPI}, \textbf{Quart}, \textbf{SQLAlchemy}), RAG pipelines, and stateful agent frameworks (\textbf{Letta}). Experienced in deploying services on \textbf{GCP} (Cloud Run, Cloud Storage, Cloud SQL) with full-stack \textbf{OpenTelemetry} observability. Adept at agile collaboration within distributed, \textbf{remote teams}.
+
+%====================
+% Experience
+%====================
+\section*{Experience}
+
+\begin{tabular}{@{}p{0.75\textwidth}@{\hspace{0.02\textwidth}}>{\raggedleft\arraybackslash}p{0.23\textwidth}@{}}
+\textbf{Software Engineer} & \textbf{Apr 2024 – Present} \\
+\textit{HashInclude Computech Pvt Ltd and ConSecure Technologies Pvt Ltd Bangalore, Karnataka, India} & \\
+
+\multicolumn{2}{@{}p{0.97\textwidth}@{}}{\small \textit{(Internal transfer from ConSecure to HashInclue within the same corporate group; continuous role)}} \\
+
+\end{tabular}
+
+\vspace{0.2cm}
+
+\textbf{Newton Infra -- Enterprise AI Agent Platform:}
+\vspace{0.1cm}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    % --- Agent Framework & Middleware Service ---
+    \item Built an \textbf{enterprise AI platform} on top of \textbf{Letta} (stateful agent framework), configuring agents with custom personas and dynamic tool sets to deliver long-running, context-aware enterprise conversations.
+    \item Self-hosted \textbf{ZITADEL} (open-source IAM) on Docker to broker SSO via external IdPs (Google, Microsoft Entra ID) and a custom OIDC wrapper for the in-house Noah ERP, using OAuth 2.0 Authorization Code + \textbf{PKCE} for secure sign-ins.
+    \item Implemented \textbf{role-based access control (RBAC)} governing both tool availability and document visibility---users only see AI capabilities and data their role permits.
+    % --- Tool Server & MCP ---
+    \item Developed a \textbf{dynamic tool discovery system} for the \textbf{Tool Server} (FastAPI), allowing admins to register new AI capabilities (ERP, Email, web search, charts) at runtime---\textbf{eliminating service redeployments}.
+    \item Integrated \textbf{Model Context Protocol (MCP)} support, enabling AI agents to dynamically discover and invoke tools from any MCP-compliant server via SSE or HTTP transport.
+    % --- Reliability ---
+    \item Prevented data loss by designing a \textbf{Redis-backed message queue}: the AI agent writes responses to Redis and the UI consumes asynchronously, guaranteeing \textbf{zero message loss} even when the client connection drops mid-stream.
+    % --- Document Service ---
+    \item Built the \textbf{Document Service} (FastAPI + Celery): a parallelized \textbf{Docling}-based ingestion pipeline (\textbf{50\% faster}) supporting \textbf{9 file formats} (PDF, DOCX, PPTX, HTML, CSV, XLSX, MD, AsciiDoc, Images) with \textbf{Vision LLM} for automatic chart/image description.
+    \item Developed the \textbf{Document Analysis} tool (\texttt{document\_analysis}) with a \textbf{hybrid search engine}---30\% PostgreSQL full-text + 70\% pgvector cosine similarity over 1024-dim embeddings---enabling agents to perform RAG with inline citations.
+    % --- Impact & DevOps ---
+    \item Instrumented \textbf{full-stack OpenTelemetry observability} (logging $\rightarrow$ Loki, tracing $\rightarrow$ Tempo, metrics $\rightarrow$ Prometheus) with a custom dashboard for real-time agent performance monitoring.
+    \item Empowered the workforce with AI assistants for autonomous Email management and \textbf{HR transactions (Leave, Allowances, Payslips)}, reducing manual workflow time from \textasciitilde20 min to \textasciitilde2 min per transaction.
+    \item Established \textbf{CI/CD pipelines} with Docker and automated \textbf{Celery Beat} scheduled tasks---daily user sync from ERP and \textbf{30-day session archival} to reclaim storage across both Letta and PostgreSQL.
+    \item \textbf{Tech Stack:} Python, Quart, FastAPI, PostgreSQL (pgvector), Redis, Celery, GCP, Docker, OpenTelemetry, Letta, MCP.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{AI Sports Analytics System:}
+\vspace{0.1cm}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Architected the backend for a Generative AI sports analytics platform using \textbf{Google Agent ADK} and \textbf{Gemini 2.5 Pro}, enabling natural language interaction over large-scale sports datasets.
+    \item Engineered \textbf{Text-to-SQL} agents allowing non-technical users to generate complex charts and performance insights directly from raw data via natural language.
+    \item Architected a tool-calling system using the \textbf{Model Context Protocol (MCP)} to provide agents real-time BigQuery access, implementing automated SQL validation and self-correction loops achieving \textbf{95\%+} query accuracy.
+    \item Engineered a multimodal RAG pipeline using \textbf{Docling} and \textbf{Gemini Vision}, enabling analysis of charts, tables, and screenshots beyond text-only retrieval.
+    \item Implemented a secure visualization engine that executes AI-generated Python code within a constrained Docker sandbox (\texttt{llm-sandbox}), producing interactive Plotly analytics delivered via \textbf{Server-Sent Events (SSE)} for real-time streaming.
+    \item Developed a granular RBAC security layer integrating \textbf{Azure AD (Microsoft Entra ID)} and \textbf{SQLAlchemy}, mapping enterprise user groups to specific BigQuery datasets to enforce dataset-level isolation between different organizational roles (Coaches vs. Data Scientists).
+    \item Optimized system performance with a short-TTL caching strategy for permission lookups, reducing database overhead by \textbf{30\%} and ensuring sub-second access to permitted data tables.
+    \item Implemented distributed tracing using \textbf{OpenTelemetry} and established CI/CD pipelines via \textbf{Cloud Build} for reliable microservice deployments.
+    \item \textbf{Tech Stack:} Google Agent ADK, Python, FastAPI, Google Gemini, BigQuery, MCP, Docling, Docker, Plotly, SSE.
+\end{itemize}
+
+%====================
+% Skills
+%====================
+\section*{Skills}
+\textbf{Languages:} Python, SQL \\
+\textbf{Frameworks:} FastAPI, Quart, SQLAlchemy, Pydantic, Celery, Letta, Google Agent ADK, MCP \\
+\textbf{Databases:} PostgreSQL (pgvector), Redis \\
+\textbf{Infrastructure:} GCP (Cloud Run, Cloud Storage, Cloud SQL), Docker, Nginx \\
+\textbf{Observability:} OpenTelemetry, Prometheus, Loki, Tempo \\
+\textbf{Tools:} Git, Alembic, Postman, Portainer
+
+%====================
+% Certifications
+%====================
+\section*{Certifications}
+\href{https://www.credly.com/badges/f9cd8943-6e43-41e5-869b-2f799cdffc8b/linked_in?t=ss4uqd}{\textbf{Google Associate Cloud Engineer Certification}} \hfill \textbf{Feb 2025} \\
+\href{https://www.credly.com/badges/e481bac7-4115-4ee5-abbb-0a16985e4033/public_url}{\textbf{Google Professional Cloud Architect Certification}} \hfill \textbf{Jan 2026}
+
+%====================
+% Education
+%====================
+\section*{Education}
+
+\begin{tabular}{@{}p{0.75\textwidth}@{\hspace{0.02\textwidth}}>{\raggedleft\arraybackslash}p{0.23\textwidth}@{}}
+\textbf{B.E. in Information Technology} & \textbf{2019–2023} \\
+Marathwada Mitra Mandal's College of Engineering, Pune & \\
+CGPA: 7.44 & \\
+\end{tabular}
+
+\end{document}
